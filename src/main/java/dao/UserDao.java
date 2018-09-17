@@ -5,9 +5,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import util.JDBCUtils;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 
 /**
  * @author : qcg
@@ -21,30 +19,68 @@ public class UserDao implements BaseDao<User> {
     static Logger logger = LogManager.getLogger();
 
     @Override
-    public boolean add(User user) {
+    public int add(User user) {
 
         String sql = "insert into user(userName,gender,gj) values(?,?,?)";
         Connection connection = JDBCUtils.getConn();
+        PreparedStatement preparedStatement = null;
+        ResultSet rs = null;
         try {
-            PreparedStatement preparedStatement = connection.prepareStatement(sql,PreparedStatement.RETURN_GENERATED_KEYS);
-            preparedStatement.setString(1,user.getUserName());
-            preparedStatement.setString(1,user.getGender());
-            preparedStatement.setString(1,user.getGj());
-            return preparedStatement.execute();
+            preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            preparedStatement.setString(1, user.getUserName());
+            preparedStatement.setString(1, user.getGender());
+            preparedStatement.setString(1, user.getGj());
+            preparedStatement.execute();
+            rs = preparedStatement.getGeneratedKeys();
+            rs.next();
+            return rs.getInt(1);
 
         } catch (SQLException e) {
             logger.error("数据库连接失败: " + e.getMessage());
+        } finally {
+            JDBCUtils.closeConn(connection, preparedStatement, rs);
+        }
+        return 0;
+    }
+
+    @Override
+    public boolean del(int id) {
+        String sql = "delete from user where id = ?";
+        Connection connection = JDBCUtils.getConn();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setInt(1, id);
+            int result = preparedStatement.executeUpdate();
+            if (result == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+        } finally {
+            JDBCUtils.closeConn(connection, preparedStatement, resultSet);
         }
         return false;
     }
 
     @Override
-    public boolean del(User user) {
-        return false;
-    }
-
-    @Override
-    public boolean modify(User user) {
+    public boolean update(User user) {
+        String sql = "update user set userName = ? , gender = ? , gj = ? where id = ?";
+        Connection connection = JDBCUtils.getConn();
+        PreparedStatement preparedStatement = null;
+        ResultSet resultSet = null;
+        try {
+            preparedStatement = connection.prepareStatement(sql);
+            int result = preparedStatement.executeUpdate();
+            if (result == 1) {
+                return true;
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
+        } finally {
+            JDBCUtils.closeConn(connection, preparedStatement, resultSet);
+        }
         return false;
     }
 }

@@ -11,20 +11,20 @@ public interface BaseDao<T> {
      * @param t
      * @return
      */
-    boolean add(T t);
+    int add(T t);
 
     /**
      *  删
-     * @param t
+     * @param id
      * @return
      */
-    boolean del(T t);
+    boolean del(int id);
 
     /**
      * 改
      * @param t
      * @return
      */
-    boolean modify(T t);
+    boolean update(T t);
 
 }

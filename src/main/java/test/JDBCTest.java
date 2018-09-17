@@ -17,7 +17,8 @@ public class JDBCTest {
     public static void main(String[] args) {
         try {
             logger.info("数据库名称为： " + test01().getSchema());
-            test02();
+//            test02();
+            test03();
         } catch (SQLException e) {
             logger.error(e.getMessage());
         }
@@ -44,6 +45,25 @@ public class JDBCTest {
 
         } catch (SQLException e) {
             e.printStackTrace();
+        }
+    }
+
+    static void test03() {
+        Connection connection = test01();
+        String sql = "insert into user(userName, gender, gj) values(1,2,3)";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
+            ps.execute();
+            ResultSet rs = ps.getGeneratedKeys();
+            while (rs.next()) {
+                ResultSetMetaData rsm = rs.getMetaData();
+                int colNum = rsm.getColumnCount();
+                for (int i = 0; i < colNum; i++) {
+                    logger.debug(rsm.getColumnName(i + 1) + rsm.getColumnTypeName(i + 1) + rs.getObject(i + 1));
+                }
+            }
+        } catch (SQLException e) {
+            logger.error(e.getMessage());
         }
     }
 }
