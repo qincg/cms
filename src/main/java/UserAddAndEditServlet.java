@@ -6,6 +6,7 @@ import org.apache.logging.log4j.Logger;
 import util.StrUtils;
 
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -17,6 +18,7 @@ import java.util.Map;
  * @Description:
  * @Date: 2018/10/12 13:05
  */
+@WebServlet(name = "addAndEdit",urlPatterns = {"add.jsp"})
 public class UserAddAndEditServlet extends HttpServlet {
 
     private Logger logger = LogManager.getLogger();
