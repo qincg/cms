@@ -13,6 +13,12 @@ public class UserController {
 
     private static UserDao userDao = new UserDao();
 
+
+    /**
+     *  默认返回插入的id值，如果插入失败返回的是0
+     * @param user
+     * @return
+     */
     public int add(User user) {
         return userDao.add(user);
     }
