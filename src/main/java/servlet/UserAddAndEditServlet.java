@@ -1,3 +1,5 @@
+package servlet;
+
 import bean.User;
 import controller.UserController;
 import org.apache.commons.beanutils.BeanUtils;
