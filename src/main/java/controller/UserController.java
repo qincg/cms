@@ -3,6 +3,9 @@ package controller;
 import bean.User;
 import dao.UserDao;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * @author : qcg
  * @datetime: 18-9-17 上午12:21
@@ -29,6 +32,10 @@ public class UserController {
 
     public boolean update(User user) {
         return userDao.update(user);
+    }
+
+    public List<User> list(){
+        return new ArrayList<>();
     }
 
 }

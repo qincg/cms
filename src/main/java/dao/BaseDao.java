@@ -1,5 +1,9 @@
 package dao;
 
+import bean.User;
+
+import java.util.List;
+
 /**
  * @author : qcg
  * @datetime: 18-9-17 上午12:45
@@ -26,5 +30,7 @@ public interface BaseDao<T> {
      * @return
      */
     boolean update(T t);
+
+    List<User> list();
 
 }

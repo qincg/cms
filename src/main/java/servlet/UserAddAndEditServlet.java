@@ -20,7 +20,7 @@ import java.util.Map;
  * @Description:
  * @Date: 2018/10/12 13:05
  */
-@WebServlet(name = "addAndEdit",urlPatterns = {"add.jsp"})
+@WebServlet(name = "addAndEdit",urlPatterns = {"/addAndEdit"})
 public class UserAddAndEditServlet extends HttpServlet {
 
     private Logger logger = LogManager.getLogger();

@@ -12,10 +12,14 @@
     <title>添加客户</title>
 </head>
 <body>
+
 <form action="/addAndEdit" method="post">
-姓名:<input type="text" name="userName"/>
-性别:<input type="radio" name="gender"/>
-国籍:<input type="text" name="gj"/>
+<label for="userName">姓名:</label>
+<input type="text" id="userName" name="userName"/>
+<label for="gender">性别:</label>
+<input type="radio" id="gender" name="gender"/>
+<label for="gender">国籍:</label>
+<input type="text" id="gj" name="gj"/>
 <input type="submit" value="添加"><br/>
 <input type="reset" value="重置">
 </form>
