@@ -12,13 +12,13 @@
     <named-config name="mariadb">
         <property name="driverClass">org.mariadb.jdbc.Driver</property>
         <!--windows-->
-        <property name="jdbcUrl">jdbc:mariadb://localhost:3310/cms</property>
+        <!--<property name="jdbcUrl">jdbc:mariadb://localhost:3310/cms</property>-->
         <!--linux-->
-        <!--<property name="jdbcUrl">jdbc:mariadb://localhost:3306/cms</property>-->
+        <property name="jdbcUrl">jdbc:mariadb://localhost:3306/cms</property>
         <property name="user">root</property>
         <!--windows-->
-        <property name="password">myoa888</property>
+        <!--<property name="password">myoa888</property>-->
         <!--linux-->
-        <!--<property name="password">199303</property>-->
+        <property name="password">199303</property>
     </named-config>
 </c3p0-config>

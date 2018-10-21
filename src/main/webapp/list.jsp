@@ -1,4 +1,5 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="bean.User" %><%--
   Created by IntelliJ IDEA.
   User: qcg
   Date: 2018/10/12
@@ -12,8 +13,26 @@
     <title>列表</title>
 </head>
 <body>
-<table id="userList">
+<%
+    List<User> userList = (List<User>)request.getAttribute("userList");
 
+%>
+<table id="userList">
+    <tr>
+        <th>姓名</th>
+        <th>性别</th>
+        <th>国籍</th>
+    </tr>
+<%
+    for (User user : userList){
+%>
+    <tr>
+        <td><%=user.getUserName()%></td>
+        <td><%=user.getGender()%></td>
+        <td><%=user.getGj()%></td>
+    </tr>
+    <%}
+%>
 </table>
 </body>
 </html>

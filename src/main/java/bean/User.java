@@ -1,11 +1,13 @@
 package bean;
 
+import java.io.Serializable;
+
 /**
  * @author : qcg
  * @datetime: 18-9-16 下午11:25
  * @description:
  **/
-public class User {
+public class User implements Serializable {
     /**
      * 用户名
      */

@@ -35,7 +35,7 @@ public class UserController {
     }
 
     public List<User> list(){
-        return new ArrayList<>();
+        return userDao.list();
     }
 
 }

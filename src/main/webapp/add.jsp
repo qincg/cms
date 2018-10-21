@@ -13,14 +13,17 @@
 </head>
 <body>
 
-<form action="/addAndEdit" method="post">
+<form action="addAndEdit" method="post">
 <label for="userName">姓名:</label>
-<input type="text" id="userName" name="userName"/>
-<label for="gender">性别:</label>
-<input type="radio" id="gender" name="gender"/>
-<label for="gender">国籍:</label>
-<input type="text" id="gj" name="gj"/>
-<input type="submit" value="添加"><br/>
+<input type="text" id="userName" name="userName"/><br>
+性别:
+<input type="radio" id="man" name="gender" value="男"/>
+<label for="man">男</label>
+<input type="radio" id="woman" name="gender" value="女"/>
+<label for="woman">女</label><br>
+<label for="gj">国籍:</label>
+<input type="text" id="gj" name="gj"/><br>
+<input type="submit" value="添加">
 <input type="reset" value="重置">
 </form>
 </body>

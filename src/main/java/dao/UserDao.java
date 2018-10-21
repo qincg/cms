@@ -31,8 +31,8 @@ public class UserDao implements BaseDao<User> {
             if(connection != null) {
                 preparedStatement = connection.prepareStatement(sql, PreparedStatement.RETURN_GENERATED_KEYS);
                 preparedStatement.setString(1, user.getUserName());
-                preparedStatement.setString(1, user.getGender());
-                preparedStatement.setString(1, user.getGj());
+                preparedStatement.setString(2, user.getGender());
+                preparedStatement.setString(3, user.getGj());
                 preparedStatement.execute();
                 rs = preparedStatement.getGeneratedKeys();
                 rs.next();

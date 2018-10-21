@@ -25,8 +25,8 @@ public class UserAddAndEditServlet extends HttpServlet {
 
     private Logger logger = LogManager.getLogger();
 
-    private UserController userController = new UserController();
 
+    private UserController userController = new UserController();
 
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
