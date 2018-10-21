@@ -5,6 +5,7 @@ import controller.UserController;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import util.ParamUtil;
 import util.StrUtils;
 
 import javax.servlet.ServletException;
@@ -37,7 +38,9 @@ public class UserAddAndEditServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
         // 获取页面传入的所有参数
-        Map<String,String[]> parameterMap =  req.getParameterMap();
+        // Map<String,String[]> parameterMap =  req.getParameterMap();
+        Map<String, String[]> parameterMap = ParamUtil.getAllParams(req);
+
         logger.debug(StrUtils.mapToString(parameterMap));
         User user = new User();
         try {
