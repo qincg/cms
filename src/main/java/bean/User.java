@@ -8,6 +8,8 @@ import java.io.Serializable;
  * @description:
  **/
 public class User implements Serializable {
+
+    private int id;
     /**
      * 用户名
      */
@@ -45,5 +47,13 @@ public class User implements Serializable {
 
     public void setGj(String gj) {
         this.gj = gj;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 }

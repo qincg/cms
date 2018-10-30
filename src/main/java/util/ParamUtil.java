@@ -4,9 +4,7 @@ import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
 import javax.servlet.http.HttpServletRequest;
-import java.io.UnsupportedEncodingException;
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
 import java.util.Map;
 
 /*
@@ -21,11 +19,25 @@ public class ParamUtil {
      * @param paramName
      * @return
      */
-    public static String getParam(HttpServletRequest request,String paramName){
+    public static String getParam(HttpServletRequest request, String paramName){
         String value = "";
+        String aa = request.getParameter(paramName);
 
-        value = new String(request.getParameter(paramName).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
-        return value;
+        if (aa == null){
+            return value;
+        }
+
+        return new String(request.getParameter(paramName).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
+    }
+
+    public static String getParam(HttpServletRequest request, String paramName,String defaultValue){
+        String aa = request.getParameter(paramName);
+
+        if (aa == null){
+            return defaultValue;
+        }
+
+        return new String(request.getParameter(paramName).getBytes(StandardCharsets.ISO_8859_1), StandardCharsets.UTF_8);
     }
 
     public static Map<String,String[]> getAllParams(HttpServletRequest request){

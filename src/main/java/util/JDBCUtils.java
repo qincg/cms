@@ -63,4 +63,21 @@ public class JDBCUtils {
         }
     }
 
+    public static void closeConn(Connection connection, PreparedStatement preparedStatement) {
+        if (StrUtils.isNotNull(preparedStatement)) {
+            try {
+                preparedStatement.close();
+            } catch (SQLException e) {
+                logger.error("数据库连接关闭失败 " + e.getMessage());
+            }
+        }
+        if (StrUtils.isNotNull(connection)) {
+            try {
+                connection.close();
+            } catch (SQLException e) {
+                logger.error("数据库关闭失败 " + e.getMessage());
+            }
+
+        }
+    }
 }

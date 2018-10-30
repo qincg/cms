@@ -13,6 +13,7 @@
     <title>Message</title>
 </head>
 <body>
+<%@include file="index.jsp"%>
     <c:out value="${requestScope.msg}"/>
 </body>
 </html>

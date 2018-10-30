@@ -37,9 +37,14 @@ public class UserAddAndEditServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        // 获取页面传入的所有参数
-        // Map<String,String[]> parameterMap =  req.getParameterMap();
-        Map<String, String[]> parameterMap = ParamUtil.getAllParams(req);
+        // 获取页面传入的所有参数,如果是post传入，则通过filter处理，get传入，则通过paramutil处理
+        String method = req.getMethod();
+        Map<String,String[]> parameterMap;
+        if ("get".equals(method)){
+            parameterMap = ParamUtil.getAllParams(req);
+        }else {
+             parameterMap =  req.getParameterMap();
+        }
 
         logger.debug(StrUtils.mapToString(parameterMap));
         User user = new User();
@@ -48,13 +53,23 @@ public class UserAddAndEditServlet extends HttpServlet {
         }catch (Exception e){
             logger.error("map 转换 user对象异常！");
         }
+        String op = ParamUtil.getParam(req,"op");
+        int id = 0;
+        boolean result = false;
+        if ("add".equals(op)){
+            id = userController.add(user);
+        }else if ("edit".equals(op)){
+            result = userController.update(user);
+        }
+        if (id != 0){
+            result = true;
+        }
 
-        int result = userController.add(user);
         String msg = "";
-        if (result == 0 ){
-            msg = "操作失败!";
+        if (result ){
+            msg = "操作成功!";
         }else {
-            msg = "操作成功";
+            msg = "操作失败";
         }
 
         // 重定向到message页面

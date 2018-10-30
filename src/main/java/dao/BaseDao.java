@@ -31,6 +31,11 @@ public interface BaseDao<T> {
      */
     boolean update(T t);
 
-    List<User> list();
+    List<T> list();
 
+    T queryById(int id);
+
+    List<T> list(int pageSize, int currentPage);
+
+    void batchAdd(List<T> list);
 }

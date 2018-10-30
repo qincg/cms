@@ -12,19 +12,45 @@
     <title>添加客户</title>
 </head>
 <body>
-
-<form action="addAndEdit" method="post">
-<label for="userName">姓名:</label>
-<input type="text" id="userName" name="userName"/><br>
-性别:
-<input type="radio" id="man" name="gender" value="男"/>
-<label for="man">男</label>
-<input type="radio" id="woman" name="gender" value="女"/>
-<label for="woman">女</label><br>
-<label for="gj">国籍:</label>
-<input type="text" id="gj" name="gj"/><br>
-<input type="submit" value="添加">
-<input type="reset" value="重置">
+<%--
+    <jsp:include> 是把文件编译后引入，引入的是文件编译后的结果
+    <%@ include> 是把文件加入进来一起编译
+--%>
+<%--<jsp:include page="index.jsp"/>--%>
+<%@include file="index.jsp"%>
+<form class="form-horizontal" action="addAndEdit" method="post">
+    <div class="form-group col-md-12">
+        <label class="col-md-2 control-label" for="userName">姓名:</label>
+        <div class="col-md-8">
+            <input class="form-control" type="text" id="userName" name="userName" placeholder="请输入姓名"/>
+        </div>
+    </div>
+    <div class="form-group col-md-12">
+        <label class="col-md-2 control-label">性别:</label>
+        <div class="col-md-8">
+            <label class="radio-inline">
+                <input type="radio" id="man" name="gender" value="男"/>男
+            </label>
+            <label class="radio-inline">
+                <input type="radio" id="woman" name="gender" value="女"/>女
+            </label>
+        </div>
+    </div>
+    <div class="form-group col-md-12">
+        <label class="col-md-2 control-label" for="gj">国籍:</label>
+        <div class="col-md-8">
+            <input class="form-control" type="text" id="gj" name="gj" placeholder="请输入国籍"/><br>
+        </div>
+    </div>
+    <div style="display: none">
+        <input type="text" id="op" name="op" value="add">
+    </div>
+    <div class="form-group col-md-12">
+        <div class="col-md-offset-2 col-md-8">
+            <input class="btn btn-info" type="submit" value="添加">
+            <input class="btn btn-danger" type="reset" value="重置">
+        </div>
+    </div>
 </form>
 </body>
 </html>

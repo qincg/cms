@@ -38,4 +38,16 @@ public class UserController {
         return userDao.list();
     }
 
+    public User queryById(int id){
+        return userDao.queryById(id);
+    }
+
+
+    public List<User> list(int pageSize, int currentPage) {
+        return userDao.list(pageSize,currentPage);
+    }
+
+    public void batchAdd(List<User> list){
+        userDao.batchAdd(list);
+    }
 }

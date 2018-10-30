@@ -1,8 +1,6 @@
 package servlet;
 
-import bean.PageBean;
 import bean.User;
-import controller.PageController;
 import controller.UserController;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -14,11 +12,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.util.List;
 
-@WebServlet(name = "userList",urlPatterns = {"/userList"})
-public class UserListServlet extends HttpServlet {
-
+@WebServlet(name = "userShow",urlPatterns = {"/userShow"})
+public class UserShowServlet extends HttpServlet {
     private Logger logger = LogManager.getLogger();
     private UserController userController = new UserController();
 
@@ -29,14 +25,14 @@ public class UserListServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        int currentPage = Integer.parseInt(ParamUtil.getParam(req,"currentPage","1"));
-        int pageSize = 10;
-        PageController pageController = new PageController();
-        PageBean<User> pageBean = pageController.getPage(pageSize, currentPage);
-        req.setAttribute("pageBean",pageBean);
-        //List<User> userList = userController.list();
-        //req.setAttribute("userList",userList);
-
-        req.getRequestDispatcher("/list.jsp").forward(req,resp);
+        String userId = ParamUtil.getParam(req,"id");
+        String op = ParamUtil.getParam(req, "op");
+        User user = userController.queryById(Integer.parseInt(userId));
+        req.setAttribute("user",user);
+        if ("edit".equals(op)){
+            req.getRequestDispatcher("/edit.jsp").forward(req,resp);
+        }else {
+            req.getRequestDispatcher("/show.jsp").forward(req, resp);
+        }
     }
 }

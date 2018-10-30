@@ -1,13 +1,27 @@
 <%@ page contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
-<html>
+<!DOCTYPE html>
+<html lang="zh-CN">
 <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="IE=edge" >
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%--bootstrap--%>
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
+    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+
     <title>首页</title>
 </head>
 <body>
-<h2>CMS</h2>
-<ul>
-    <li><a href="add.jsp">添加</a></li>
-    <li><a href="${pageContext.request.contextPath}/userList">列表</a></li>
-</ul>
+<h1 class="text-center"><b>CMS</b></h1>
+<div >
+    <ul class="nav nav-pills">
+        <li><a href="index.jsp">首页</a></li>
+        <li><a href="${pageContext.request.contextPath}/add.jsp">添加</a></li>
+        <li><a href="${pageContext.request.contextPath}/userList">列表</a></li>
+    </ul>
+</div>
+
 </body>
 </html>
