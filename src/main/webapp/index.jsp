@@ -7,9 +7,13 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%--bootstrap--%>
     <link rel="stylesheet" href="${pageContext.request.contextPath}/css/bootstrap.css">
+    <link href="${pageContext.request.contextPath}/css/bootstrap-table.css">
     <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
+    <%--<script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>--%>
+    <script src="${pageContext.request.contextPath}/js/jquery-3.3.1.js"></script>
     <script src="${pageContext.request.contextPath}/js/bootstrap.js"></script>
+    <script src="${pageContext.request.contextPath}/js/bootstrap-table.js"></script>
+    <script src="${pageContext.request.contextPath}/js/locale/bootstrap-table-zh-CN.js"></script>
 
     <title>首页</title>
 </head>
